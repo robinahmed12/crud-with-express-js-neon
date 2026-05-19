@@ -7,12 +7,16 @@ import { Pool } from "pg";
 import config from "./config";
 import {  pool } from "./db";
 import { userRoute } from "./modules/user/user.route";
+import { profileRouter } from "./modules/profile/profile.route";
+import { authRouter } from "./modules/auth/auth.route";
 const app: Application = express();
 const port = config.port;
 
 // middle ware
 app.use(express.json());
 app.use("/api/users", userRoute)
+app.use("/api/profile", profileRouter)
+app.use("/api/auth", authRouter);
 
 
 
